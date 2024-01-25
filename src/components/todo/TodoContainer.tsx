@@ -1,13 +1,14 @@
-import { Button } from "../ui/button";
+import AddTodoModal from "./AddTodoModal";
 import TodoCard from "./TodoCard";
+import TodoFilter from "./TodoFilter";
 
 const TodoContainer = () => {
   return (
     <div>
       {/* Add and filter todo  */}
       <div className="flex justify-between pb-3">
-        <Button className="bg-primary-gradient text-lg font-bold">Add todo</Button>
-        <Button className="bg-primary-gradient text-lg font-bold">Filter</Button>
+        <AddTodoModal></AddTodoModal>
+        <TodoFilter></TodoFilter>
       </div>
 
       <div className="bg-primary-gradient w-full h-full rounded-xl p-[5px] space-y-2">
