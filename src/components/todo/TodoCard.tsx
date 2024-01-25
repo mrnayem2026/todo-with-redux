@@ -1,4 +1,6 @@
+import { useAppDispatch } from "@/redux/hooks";
 import { Button } from "../ui/button";
+import { removeTodo } from "@/redux/features/todosSlice";
 
 type TTodo = {
   id: string;
@@ -12,7 +14,7 @@ type TTodoProps = {
 };
 
 const TodoCard = ({ todo }: TTodoProps) => {
-
+  const dispatch = useAppDispatch();
   return (
     <div className="bg-white rounded-md flex justify-between items-center p-3 border-2">
       <input type="checkbox"></input>
@@ -20,7 +22,11 @@ const TodoCard = ({ todo }: TTodoProps) => {
       {/* <p>Time</p> */}
       <p>{todo.description}</p>
       <div className="space-x-4">
-        <Button className="bg-red-500">
+        {/* Remove Task Button  */}
+        <Button
+          onClick={() => dispatch(removeTodo(todo.id))}
+          className="bg-red-500"
+        >
           <svg
             xmlns="http://www.w3.org/2000/svg"
             fill="none"
@@ -36,6 +42,7 @@ const TodoCard = ({ todo }: TTodoProps) => {
             />
           </svg>
         </Button>
+        {/* Edit Task Button  */}
         <Button className="bg-sky-400">
           <svg
             xmlns="http://www.w3.org/2000/svg"
