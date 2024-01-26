@@ -5,7 +5,6 @@ import TodoFilter from "./TodoFilter";
 
 const TodoContainer = () => {
   const { todos } = useAppSelector((state) => state.todos);
-  console.log(todos[0]);
   
   return (
     <div>

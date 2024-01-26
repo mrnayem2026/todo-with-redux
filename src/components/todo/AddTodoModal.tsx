@@ -8,6 +8,15 @@ import {
   DialogTitle,
   DialogTrigger,
 } from "@/components/ui/dialog";
+import {
+  Select,
+  SelectContent,
+  SelectGroup,
+  SelectItem,
+  SelectLabel,
+  SelectTrigger,
+  SelectValue,
+} from "@/components/ui/select"
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { addTodo } from "@/redux/features/todosSlice";
@@ -17,15 +26,17 @@ import { FormEvent, useState } from "react";
 const AddTodoModal = () => {
   const [task, setTasks] = useState("");
   const [description, setDescription] = useState("");
+  const [priority, setPriority] = useState("");
   const dispatch = useAppDispatch();
+
 
   const onsubmit = (e: FormEvent) => {
     e.preventDefault();
-
     const randomString = Math.random().toString(36).substring(2, 7);
     const todoTask = {
       id: randomString,
       title: task,
+      priority,
       description,
     };
     dispatch(addTodo(todoTask));
@@ -66,6 +77,22 @@ const AddTodoModal = () => {
                 id="description"
                 className="col-span-3"
               />
+            </div>
+            {/* Select Prioroty  */}
+            <div className="grid grid-cols-4 items-center gap-4">
+              <Select onValueChange={(value: string) => setPriority(value)}>
+                <SelectTrigger className="w-[180px]">
+                  <SelectValue  placeholder="Select Priority" />
+                </SelectTrigger>
+                <SelectContent>
+                  <SelectGroup >
+                    <SelectLabel>Task Priority</SelectLabel>
+                    <SelectItem value="highe">Highe</SelectItem>
+                    <SelectItem value="medium">Medium</SelectItem>
+                    <SelectItem value="low">Low</SelectItem>
+                  </SelectGroup>
+                </SelectContent>
+              </Select>
             </div>
           </div>
           <div className="flex justify-end">
