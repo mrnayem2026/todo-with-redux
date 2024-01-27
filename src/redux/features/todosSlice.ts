@@ -33,8 +33,6 @@ const todosSlice = createSlice({
       task!.isCompleted = !task?.isCompleted
     },
     setTaskPriority: (state, action) => {
-      console.log(action.payload);
-      
         const task = state.todos.find((todo)=> todo.id === action.payload.id)
         task!.priority = action.payload.priority
     }

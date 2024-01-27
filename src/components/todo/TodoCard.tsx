@@ -10,6 +10,8 @@ type TTodo = {
   isCompleted?: boolean
 };
 
+
+
 type TTodoProps = {
   todo: TTodo;
 };

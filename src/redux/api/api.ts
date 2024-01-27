@@ -1,7 +1,17 @@
-import { createApi, fetchBaseQuery } from '@reduxjs/toolkit/query/react'
+import { createApi, fetchBaseQuery } from "@reduxjs/toolkit/query/react";
 
-const baseApi = createApi({
+export const baseApi = createApi({
     reducerPath:"baseApi",
-    baseQuery:fetchBaseQuery({baseUrl:'http://localhost:5173/'}),
-    endpoints
+    baseQuery:fetchBaseQuery({baseUrl:"http://localhost:5000"}),
+    endpoints:(maker)=>({
+        getTodos: maker.query({
+            query:()=>({
+                url:'/tasks',
+                method:'GET'
+            })
+        })
+    })
 })
+
+export const {useGetTodosQuery} = baseApi;
+
